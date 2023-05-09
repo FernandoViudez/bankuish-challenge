@@ -6,6 +6,8 @@ https://docs.google.com/document/d/1p4JYPEfR-cE40DfqeRKlE8VTc54esduKWK-UplOwoU0/
 
 ### Prerequisites
 
+Note: If you are in windows, please consider cloning this project using `--config core.autocrlf=input` see [here](https://github.com/tiangolo/uwsgi-nginx-flask-docker/issues/127) why
+
 <ul>
   <li>
     Node.js v18.14.2
@@ -17,6 +19,15 @@ https://docs.google.com/document/d/1p4JYPEfR-cE40DfqeRKlE8VTc54esduKWK-UplOwoU0/
     docker-compose v1.29.2
   </li>
 </ul>
+
+### Quick start
+
+1. `git clone https://github.com/FernandoViudez/bankuish-challenge.git --config core.autocrlf=input`
+2. add `.env` passed into mail to root folder
+3. `docker compose up -d`
+4. open http://localhost:3000
+5. you should see `200` as response
+6. now you cant import postman project and start playing! Please consider reading [business logic](#business-logic) before using postman project.
 
 ### Steps to import [postman project](./postman/)
 
@@ -37,8 +48,8 @@ https://docs.google.com/document/d/1p4JYPEfR-cE40DfqeRKlE8VTc54esduKWK-UplOwoU0/
 
 ### Business logic
 
-1. login or signup to get firebase token (auth.login || auth.signup)
-2. create batch of courses (course.create)
+1. login or signup to get firebase token (`auth.login` || `auth.signup`)
+2. create batch of courses (`course.create`)
 
 - (this endpoint is public but you could create a user roles management for restricting it)
   here is an example payload:
@@ -79,16 +90,16 @@ https://docs.google.com/document/d/1p4JYPEfR-cE40DfqeRKlE8VTc54esduKWK-UplOwoU0/
 }
 ```
 
-3. Create empty study-schedule (studySchedule.create)
-4. Add desired courses to your study schedule (studySchedule.addCourses)
+3. Create empty study-schedule (`studySchedule.create`)
+4. Add desired courses to your study schedule (`studySchedule.addCourses`)
 5. Courses schedule management:
-   - take/begin a new course from your schedule (studySchedule.takeCourse)
-   - finish your current course (studySchedule.finishCourse)
-6. Study Schedule view (studySchedule.get)
+   - take/begin a new course from your schedule (`studySchedule.takeCourse`)
+   - finish your current course (`studySchedule.finishCourse`)
+6. Study Schedule view (`studySchedule.get`)
 
 - get your schedule of courses, ordered by course.order ASC
 
-7. Courses view (course.getAll)
+7. Courses view (`course.getAll`)
 
 - get all courses from the system without an order
 

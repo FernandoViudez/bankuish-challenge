@@ -21,3 +21,16 @@ https://docs.google.com/document/d/1p4JYPEfR-cE40DfqeRKlE8VTc54esduKWK-UplOwoU0/
 ### Steps to run this project
 
 WIP
+
+### Goals for today:
+
+1. Finish endpoints:
+
+- course
+  - getAll
+- study-schedule
+  - selectCourse
+  - finish-course
+
+2. configure and publish docker-compose
+3. perform tests if time allows me

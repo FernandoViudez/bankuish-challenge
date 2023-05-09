@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:latest
+    networks:
+      - bankuish
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_ROOT_PASSWORD: ${DB_USER_PASSWORD}
+    ports:
+      - '${DB_PORT}:3306'
+    expose:
+      - '${DB_PORT}'
+    volumes:
+      - /data/mysql:/var/lib/mysql
+  nestjs-api:
+    image: nestjs-api
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    networks:
+      - bankuish
+networks:
+  bankuish:
+    driver: bridge

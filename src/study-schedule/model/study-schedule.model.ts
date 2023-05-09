@@ -19,6 +19,7 @@ export class StudyScheduleEntity {
   student: StudentEntity;
 
   @OneToOne(() => CourseEntity)
+  @JoinColumn()
   currentCourse?: CourseEntity;
 
   @OneToMany(() => ScheduleEntity, (schedule) => schedule.studySchedule)

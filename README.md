@@ -24,13 +24,64 @@ WIP
 
 ### Goals for today:
 
-1. Finish endpoints:
-
-- course
-  - getAll
-- study-schedule
-  - selectCourse
-  - finish-course
-
 2. configure and publish docker-compose
-3. perform tests if time allows me
+3. add postman collection and envs to this project
+4. update readme and explain how to start this application with docker-compose
+5. perform tests if time allows me
+
+### Business logic
+
+1. login or signup to get firebase token (auth.login || auth.signup)
+2. create batch of courses (course.create)
+
+- (this endpoint is public but you could create a user roles management for restricting it)
+  here is an example payload:
+
+```
+{
+  courses: [
+    {
+      "name": "Finance",
+      "order": 0
+    },
+    {
+      "name": "Investment",
+      "order": 1,
+      "dependencies": ["Finance"]
+    },
+    {
+      "name": "Investment Management",
+      "order": 2,
+      "dependencies": ["Investment"]
+    },
+    {
+      "name": "Portfolio theories",
+      "order": 3,
+      "dependencies": ["Investment"]
+    },
+    {
+      "name": "Investment style",
+      "order": 4,
+      "dependencies": ["Investment Management"]
+    },
+    {
+      "name": "Portfolio construction",
+      "order": 5,
+      "dependencies": ["Portfolio theories"]
+    }
+  ]
+}
+```
+
+3. Create empty study-schedule (studySchedule.create)
+4. Add desired courses to your study schedule (studySchedule.addCourses)
+5. Courses schedule management:
+   - take/begin a new course from your schedule (studySchedule.takeCourse)
+   - finish your current course (studySchedule.finishCourse)
+6. Study Schedule view (studySchedule.get)
+
+- get your schedule of courses, ordered by course.order ASC
+
+7. Courses view (course.getAll)
+
+- get all courses from the system without an order

@@ -60,4 +60,27 @@ export class ScheduleService {
       console.log(error);
     }
   }
+
+  async completeSchedule({
+    courseId,
+    studySchedule,
+  }: {
+    courseId: number;
+    studySchedule: StudyScheduleEntity;
+  }) {
+    const schedule = await this.getScheduleByCourseIdAndStudySchedule({
+      courseId,
+      studyScheduleId: studySchedule.id,
+    });
+    schedule.taken = true;
+    try {
+      await this.scheduleRepository.save(schedule);
+      return {
+        ok: true,
+        schedule: schedule.id,
+      };
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

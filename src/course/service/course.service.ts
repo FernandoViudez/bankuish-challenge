@@ -16,6 +16,10 @@ export class CourseService {
     private readonly courseRepository: Repository<CourseEntity>,
   ) {}
 
+  async getAll() {
+    return await this.courseRepository.find();
+  }
+
   async getByName(courseName: string) {
     const course = await this.courseRepository.findOne({
       where: {
@@ -35,12 +39,6 @@ export class CourseService {
       newCourses.push(_course);
     }
     return newCourses;
-  }
-
-  async orderCourses(courses: CourseEntity[]) {
-    courses.sort(
-      (prevCourse, nextCourse) => prevCourse.order - nextCourse.order,
-    );
   }
 
   async create(newCourseDto: NewCourseDto) {

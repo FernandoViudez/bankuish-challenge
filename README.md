@@ -18,21 +18,22 @@ https://docs.google.com/document/d/1p4JYPEfR-cE40DfqeRKlE8VTc54esduKWK-UplOwoU0/
   </li>
 </ul>
 
-### Steps to run this project
+### Steps to import [postman project](./postman/)
 
-WIP
+1. open postman
+2. select your workspace (or create if your don't already have one)
+3. select "collections" from sidenav
+4. click on "import" button up to collections
+5. drag and drop files from [postman folder](./postman/) from this repo
+6. select `bankuish-local` environment at the right top of your screen
+7. that's all, now you can start calling endpoints from postman collection!
 
-### Goals for today:
+### Run this project using docker compose
 
-2. configure and publish docker-compose
-3. add postman collection and envs to this project
-4. update readme and explain how to start this application with docker-compose
-5. perform tests if time allows me
+##### Before running docker compose check you have .env file (passed into challenge email) at the root of this project. If you don't have it, please send me an [email](viudezfernando@gmail.com) requesting the .env file.
 
-### Setup docker-compose
-
-- `docker-compose up` for running and monitoring in real time
-- `docker-compose up -d` for running on the background
+- `docker compose up` for running and monitoring in real time
+- `docker compose up -d` for running in the background
 
 ### Business logic
 
@@ -90,3 +91,7 @@ WIP
 7. Courses view (course.getAll)
 
 - get all courses from the system without an order
+
+### TODO:
+
+Tests

@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "23d4b2a2-28c0-47fb-b61c-fe0f93c5c738",
+		"name": "bankuish",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16620802"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "auth.signup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"const token = jsonData.idToken;\r",
+									"pm.globals.set(\"jwt\", token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test1@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"returnSecureToken\": true \r\n}"
+						},
+						"url": {
+							"raw": "{{firebase-host}}signUp?key={{api-key}}",
+							"host": [
+								"{{firebase-host}}signUp"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api-key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth.login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"const token = jsonData.idToken;\r",
+									"pm.globals.set(\"jwt\", token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"returnSecureToken\": true \r\n}"
+						},
+						"url": {
+							"raw": "{{firebase-host}}signInWithPassword?key={{api-key}}",
+							"host": [
+								"{{firebase-host}}signInWithPassword"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "{{api-key}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "study-schedule",
+			"item": [
+				{
+					"name": "studySchedule.get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}{{api_path}}",
+							"host": [
+								"{{api_host}}{{api_path}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "studySchedule.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_host}}{{api_path}}",
+							"host": [
+								"{{api_host}}{{api_path}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "studySchedule.addCourses",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"courses\": [\r\n        {\r\n            \"desiredCourse\": \"Investment Management\"\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{api_host}}{{api_path}}add-courses",
+							"host": [
+								"{{api_host}}{{api_path}}add-courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "studySchedule.takeCourse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"course\": \"Investment style\"\r\n}"
+						},
+						"url": {
+							"raw": "{{api_host}}{{api_path}}take-course",
+							"host": [
+								"{{api_host}}{{api_path}}take-course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "studySchedule.finishCourse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{api_host}}{{api_path}}finish-course",
+							"host": [
+								"{{api_host}}{{api_path}}finish-course"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"api_path\", \"study-schedule/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "course.create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Portfolio construction\",\r\n    \"order\": 1\r\n}"
+						},
+						"url": {
+							"raw": "{{api_host}}{{api_path}}",
+							"host": [
+								"{{api_host}}{{api_path}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "course.getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api_host}}{{api_path}}",
+							"host": [
+								"{{api_host}}{{api_path}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.globals.set(\"api_path\", \"course/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{jwt}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

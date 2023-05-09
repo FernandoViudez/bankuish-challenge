@@ -29,6 +29,11 @@ WIP
 4. update readme and explain how to start this application with docker-compose
 5. perform tests if time allows me
 
+### Setup docker-compose
+
+- `docker-compose up` for running and monitoring in real time
+- `docker-compose up -d` for running on the background
+
 ### Business logic
 
 1. login or signup to get firebase token (auth.login || auth.signup)

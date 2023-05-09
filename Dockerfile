@@ -1,6 +1,6 @@
 FROM node:18.14.2
  
-WORKDIR /user/src/app
+WORKDIR /user/src/bankuish
  
 COPY . .
  
@@ -10,4 +10,4 @@ RUN npm run build
  
 USER node
  
-CMD ["npm", "run", "start:prod"]
+CMD ["node", "dist/main.js"]
